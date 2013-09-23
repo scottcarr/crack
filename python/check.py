@@ -2,7 +2,7 @@ import numpy as np
 from pylab import *
 
 ion()
-data = np.loadtxt("../data/rec.dat", skiprows=2)
+data = np.loadtxt("../data/B1_4000_1_rec.dat", skiprows=2)
 # print data
 # figure(1); clf()
 # plot(data[:1000,0], data[:1000,1])
