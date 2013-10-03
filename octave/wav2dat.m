@@ -1,4 +1,4 @@
-#! /usr/local/bin/octave
+#! /usr/bin/octave
 arg_list = argv();
 if (length(arg_list) != 2) 
   printf("Usage: wav2dat INFILE OUTFILE");
