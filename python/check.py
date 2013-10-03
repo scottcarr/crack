@@ -32,9 +32,11 @@ def compareSideBands():
         N = float(data.shape[0])
         fs = d["fs"]
         X, freq = getFFT(data, fs)
-        lower = 0
-        upper = np.nonzero(freq > (20 - fs/N))[0][0]
-        peak = np.abs(np.max(X[lower:upper]))
+        # lower =  np.nonzero(freq > (5. - fs/N))[0][0]
+        # upper = np.nonzero(freq > (20. - fs/N))[0][0]
+        lower = 5.0/(fs/N)
+        upper = 20.0/(fs/N)
+        peak = np.max(np.abs(X[lower:upper]))
         print peak
         coeff = 1./peak
         # coeff = 1.
