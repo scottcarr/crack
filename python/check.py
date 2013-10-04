@@ -32,11 +32,9 @@ def compareSideBands():
         N = float(data.shape[0])
         fs = d["fs"]
         X, freq = getFFT(data, fs)
-        # lower =  np.nonzero(freq > (5. - fs/N))[0][0]
-        # upper = np.nonzero(freq > (20. - fs/N))[0][0]
-        lower = 5.0/(fs/N)
-        upper = 20.0/(fs/N)
-        peak = np.max(np.abs(X[lower:upper]))
+        lower = 0
+        upper = np.nonzero(freq > (20 - fs/N))[0][0]
+        peak = np.abs(np.max(X[lower:upper]))
         print peak
         coeff = 1./peak
         # coeff = 1.
@@ -58,6 +56,17 @@ def compare10Hz():
         semilogy(freq[0:N/2], np.abs(X[0:N/2]))
         xlim([0, 20])
 
+def onekHztone():
+    filename = "../data/tones/1kHz_44100Hz_16bit_30sec.dat"
+    fs = 44100.0 # frequency samples
+    duration = 30.0
+    N = duration*fs # number data pts
+    data = np.loadtxt(filename, skiprows=2)
+    X = np.fft.fft(data)
+    freq = np.r_[0.0:fs/2.0:fs/N]
+    figure(3); clf()
+    semilogy(freq[0:N/2], np.abs(X[0:N/2]))
+    
         
                     
     
@@ -66,6 +75,6 @@ datasets = [{"filename": "../data/B1_4000_1.dat", "fs" : 44100.0},\
             {"filename": "../data/B2_4000_1.dat", "fs" : 44100.0},\
             {"filename": "../data/B3_4000_1.dat", "fs" : 44100.0}]
 #doAnalysis()
-compareSideBands()
+#compareSideBands()
 #compare10Hz()
-
+onekHztone()
