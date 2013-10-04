@@ -10,7 +10,9 @@ def doAnalysis():
 
 def getFFT(sig, fs):
     N = float(sig.shape[0])
-    X = np.fft.fft(sig[:,1])
+    han = np.hanning(N)
+    # han = np.ones(N)
+    X = np.fft.fft(han*sig[:,1])
     freq = np.r_[0.0:fs/2.0:fs/N]
     return X, freq
     
@@ -43,7 +45,7 @@ def compareSideBands():
         upper2 = 4005./(fs/N)
         peak2 = np.max(np.abs(X[lower2:upper2]))
         print peak2
-        # coeff = 1.
+        #coeff = 1.
         coeff = 1./(peak*peak2)
         subplot("212")
         semilogy(freq[0:N/2], np.abs(coeff)*np.abs(X[0:N/2]))
@@ -69,7 +71,8 @@ def onekHztone():
     duration = 30.0
     N = duration*fs # number data pts
     data = np.loadtxt(filename, skiprows=2)
-    X = np.fft.fft(data)
+    han = np.hanning(N)
+    X = np.fft.fft(N*data)
     freq = np.r_[0.0:fs/2.0:fs/N]
     figure(3); clf()
     semilogy(freq[0:N/2], np.abs(X[0:N/2]))
@@ -82,6 +85,6 @@ datasets = [{"filename": "../data/B1_4000_1.dat", "fs" : 44100.0},\
             {"filename": "../data/B2_4000_1.dat", "fs" : 44100.0},\
             {"filename": "../data/B3_4000_1.dat", "fs" : 44100.0}]
 #doAnalysis()
-#compareSideBands()
+compareSideBands()
 #compare10Hz()
-onekHztone()
+#onekHztone()
