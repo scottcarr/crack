@@ -88,10 +88,10 @@ def rerecording():
     figure(3); clf()
     subplot("211")
     semilogy(freq[0:N/2], np.abs(X[0:N/2]))
-    xlim([3950, 4050])
+    xlim([0, 20])
     subplot("212")
     semilogy(freq[0:N/2], np.abs(X[0:N/2]))
-    xlim([0, 20])
+    xlim([3950, 4050])
                 
     
 ion()
