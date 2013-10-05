@@ -77,14 +77,29 @@ def onekHztone():
     figure(3); clf()
     semilogy(freq[0:N/2], np.abs(X[0:N/2]))
     
-        
-                    
+def rerecording():
+    filename = "../data/tap3.dat"
+    fs = 48000.0 # frequency samples
+    data = np.loadtxt(filename, skiprows=2)
+    N = data.shape[0]
+    han = np.hanning(N)
+    X = np.fft.fft(N*data)
+    freq = np.r_[0.0:fs/2.0:fs/N]
+    figure(3); clf()
+    subplot("211")
+    semilogy(freq[0:N/2], np.abs(X[0:N/2]))
+    xlim([3950, 4050])
+    subplot("212")
+    semilogy(freq[0:N/2], np.abs(X[0:N/2]))
+    xlim([0, 20])
+                
     
 ion()
 datasets = [{"filename": "../data/B1_4000_1.dat", "fs" : 44100.0},\
             {"filename": "../data/B2_4000_1.dat", "fs" : 44100.0},\
             {"filename": "../data/B3_4000_1.dat", "fs" : 44100.0}]
 #doAnalysis()
-compareSideBands()
+#compareSideBands()
 #compare10Hz()
 #onekHztone()
+rerecording()
