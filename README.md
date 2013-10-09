@@ -1,7 +1,7 @@
 # Introduction
 
 
-This document is a edited collection of Scott's notes for the data collection app.
+This document is an edited collection of Scott's notes for the data collection app and Ethan's instructions for checking out / building Fiji.
 
 # Building the data collection
 
