@@ -1,0 +1,73 @@
+<h1>Introduction</h1>
+
+<p>This document is a edited collection of Scott's notes for the data collection app.</p>
+
+<h1>Building the data collection</h1>
+
+<p>Prerequisties: </p>
+
+<ul>
+<li>Linux with a package manager, I'm using Ubuntu 12.04 LTS 64</li>
+</ul>
+
+<p>Download the Raspbian cross-compiler.</p>
+
+<pre><code>     git clone https://github.com/raspberrypi/tools.git
+</code></pre>
+
+<p>Add the <code>tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian/bin</code> directory to your path</p>
+
+<h1>Download and build Fiji</h1>
+
+<p>See <a href="https://github.com/scottcarr/crack/raw/master/checkout-instructions.txt">checkout-instructions.txt</a> for how to download and required packages.</p>
+
+<p>I also needed to still the following packages:</p>
+
+<ul>
+<li>lib32stdc++6 </li>
+<li>lib32z1 </li>
+<li>lib32z1-dev</li>
+</ul>
+
+<p>After running configure but before running make, run:</p>
+
+<pre><code>  bin/add-target --host arm-linux-gnueabi-hf --posix --sync-type gcc-intrinsic
+</code></pre>
+
+<p>Now make.</p>
+
+<h1>Setup the USB sound card on your RPi</h1>
+
+<p>It's pretty much plug and play.  I read that you need to add your username to the audio group.  You can test it with Audacity.  Your package manager should have it.  Remember the RPi has a built in sound out!</p>
+
+<p>We're using aplay and arecord to play/record the sound.  See their man pages for more information.  While they have many options not all of them work with our sound card.  The max rate is 48kHz and the input is mono.  There is a list option to list the available sound cards.</p>
+
+<h1>Generating a 4kHz tone</h1>
+
+<p>Use your package manger to install sox.</p>
+
+<p>This command generates a 16-bit 30 second duration 4kHz stereo wav file (with volume 0.5)</p>
+
+<pre><code> sox -b 16 -n s4kwav.wav synth 30 sin 4000 channels 2 vol .5
+</code></pre>
+
+<p>If you don't want to generate your own tone, there's one at <a href="https://github.com/scottcarr/crack/raw/master/data/s4kwav.wav">data/s4kwav.wav</a></p>
+
+<h1>Build the data collection app</h1>
+
+<p>Download the source:</p>
+
+<pre><code>     git clone https://github.com/scottcarr/crack.git
+</code></pre>
+
+<p>Go into the java directory and make.  You will need to update the variable FIVM in java/Makefile with the folder you built Fiji in.</p>
+
+<h1>Run the app on the Raspberry Pi</h1>
+
+<p>Setup your RPi for ssh and scp AudioTestMainFIVMRPi to it.  Then just run it like any other binary.  If you run it without any arguments it'll print out a help message.</p>
+
+<h1>Reading the data</h1>
+
+<p>I wrote a Octave script to convert a .wav (binary) file to a .dat (text) file.  It's at <a href="https://raw.github.com/scottcarr/crack/master/octave/wav2dat.m">octave/wav2dat.m</a></p>
+
+<p>Once you've converted the .wav file you want to analyze you can see <a href="https://raw.github.com/scottcarr/crack/master/python/check.py">python/check.py</a> for an example of how to do an analysis using numpy.</p>
