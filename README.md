@@ -61,6 +61,6 @@ Setup your RPi for ssh and scp AudioTestMainFIVMRPi to it.  Then just run it lik
 
 # Reading the data
 
-I wrote a Octave script to convert a .wav (binary) file to a .dat (text) file.  It's at [octave/wav2dat.m](https://github.com/scottcarr/crack/blame/master/octave/wav2dat.m)
+I wrote a Octave script to convert a .wav (binary) file to a .dat (text) file.  It's at [octave/wav2dat.m](https://raw.github.com/scottcarr/crack/master/octave/wav2dat.m)
 
 Once you've converted the .wav file you want to analyze you can see [python/check.py](https://raw.github.com/scottcarr/crack/master/python/check.py) for an example of how to do an analysis using numpy.
