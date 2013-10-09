@@ -44,6 +44,8 @@ Use your package manger to install sox.
 This command generates a 16-bit 30 second duration 4kHz stereo wav file (with volume 0.5)
 
      sox -b 16 -n s4kwav.wav synth 30 sin 4000 channels 2 vol .5
+     
+If you don't want to generate your own tone, there's one at [data/s4kwav.wav](https://github.com/scottcarr/crack/raw/master/data/s4kwav.wav)
 
 # Build the data collection app
 
