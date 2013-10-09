@@ -45,7 +45,7 @@ This command generates a 16-bit 30 second duration 4kHz stereo wav file (with vo
 
      sox -b 16 -n s4kwav.wav synth 30 sin 4000 channels 2 vol .5
      
-If you don't want to generate your own tone, there's one at [data/s4kwav.wav](https://github.com/scottcarr/crack/raw/master/data/s4kwav.wav)
+If you don't want to generate your own tone, there's one at [data/s4kwav.wav](https://raw.github.com/scottcarr/crack/raw/master/data/s4kwav.wav)
 
 # Build the data collection app
 
@@ -61,6 +61,6 @@ Setup your RPi for ssh and scp AudioTestMainFIVMRPi to it.  Then just run it lik
 
 # Reading the data
 
-I wrote a Octave script to convert a .wav (binary) file to a .dat (text) file.  It's at [octave/wav2dat.m](https://github.com/scottcarr/crack/raw/master/octave/wav2dat.m)
+I wrote a Octave script to convert a .wav (binary) file to a .dat (text) file.  It's at [octave/wav2dat.m](https://raw.github.com/scottcarr/crack/raw/master/octave/wav2dat.m)
 
-Once you've converted the .wav file you want to analyze you can see [python/check.py](https://github.com/scottcarr/crack/blame/master/python/check.py) for an example of how to do an analysis using numpy.
+Once you've converted the .wav file you want to analyze you can see [python/check.py](https://raw.github.com/scottcarr/crack/blame/master/python/check.py) for an example of how to do an analysis using numpy.
