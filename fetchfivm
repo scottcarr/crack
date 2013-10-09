@@ -1,0 +1,38 @@
+#!/bin/sh
+
+if [ $# -gt 2 ]; then
+    echo "usage: $0 [repo|-] [dir]" 1>&2
+    exit 1
+fi
+
+if [ $# -ge 1 -a "x$1" != x- ]; then
+    repo="$1"
+else
+    repo=ssh://hg@hg.fiji-systems.com/fiji/fivm
+fi
+
+if [ $# -eq 2 ]; then
+    dir="$2"
+else
+    dir=`basename "$1"`
+fi
+
+hg clone "$repo" "$dir"
+if [ $? -ne 0 ]; then
+    echo "main repo checkout failed" 1>&2
+    exit 1
+fi
+
+cd "$dir"
+
+hg clone ssh://hg@hg.fiji-systems.com/fiji/testmake
+if [ $? -ne 0 ]; then
+    echo "testmake checkout failed" 1>&2
+    exit 1
+fi
+
+hg clone ssh://hg@hg.fiji-systems.com/thirdparty/oSCJ-v2.0-fiji scj
+if [ $? -ne 0 ]; then
+    echo "oSCJ checkout failed" 1>&2
+    exit 1
+fi
