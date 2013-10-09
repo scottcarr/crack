@@ -19,7 +19,7 @@ Add the `tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian/bin` director
 
 See [checkout-instructions.txt](https://github.com/scottcarr/crack/raw/master/checkout-instructions.txt) for how to download and required packages.
 
-I also needed to still the following packages:
+I also needed to install the following packages:
 
 * lib32stdc++6 
 * lib32z1 
