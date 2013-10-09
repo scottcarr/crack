@@ -58,3 +58,9 @@ Go into the java directory and make.  You will need to update the variable FIVM 
 # Run the app on the Raspberry Pi
 
 Setup your RPi for ssh and scp AudioTestMainFIVMRPi to it.  Then just run it like any other binary.  If you run it without any arguments it'll print out a help message.
+
+# Reading the data
+
+I wrote a Octave script to convert a .wav (binary) file to a .dat (text) file.  It's at [octave/wav2dat.m](https://github.com/scottcarr/crack/raw/master/octave/wav2dat.m)
+
+Once you've converted the .wav file you want to analyze you can see [python/check.py](https://github.com/scottcarr/crack/blame/master/python/check.py) for an example of how to do an analysis using numpy.
