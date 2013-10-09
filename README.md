@@ -17,7 +17,7 @@ Add the `tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian/bin` director
 
 # Download and build Fiji
 
-See checkout-instructions.txt for how to download and required packages.
+See [checkout-instructions.txt](https://github.com/scottcarr/crack/raw/master/checkout-instructions.txt) for how to download and required packages.
 
 I also needed to still the following packages:
 
